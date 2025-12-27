@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1b1f4b, #4b2c82);
+  overflow: hidden;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.fairy-bg {
+  position: fixed;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee') center/cover no-repeat;
+  opacity: 0.25;
+  z-index: -1;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.page.active {
+  display: flex;
+}
+
+.card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.title {
+  font-family: 'Princess Sofia', cursive;
+  font-size: 3rem;
+}
+
+.name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.4rem;
+  color: #ffd1f2;
+}
+
+.btn-fairy {
+  background: linear-gradient(135deg, #ff9ad5, #b388ff);
+  border: none;
+  border-radius: 50px;
+  padding: 12px 30px;
+  color: white;
+  font-weight: 600;
+}
+
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
