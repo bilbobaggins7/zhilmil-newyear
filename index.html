@@ -49,16 +49,23 @@
   </div>
 </section>
 
-<!-- Audio -->
+<link rel="stylesheet" href="style.css">
+
 <audio id="bgm" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2023/03/02/audio_0a4c3e9f9c.mp3">
+  <source src="https://cdn.pixabay.com/download/audio/2023/03/02/audio_0a4c3e9f9c.mp3" type="audio/mpeg">
 </audio>
 
 <audio id="bell">
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_9b7c0e9f6b.mp3">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_9b7c0e9f6b.mp3" type="audio/mpeg">
 </audio>
 
-<button id="musicBtn" class="btn btn-fairy music-btn">🔊 Tap to Enable Music</button>
+<button id="musicBtn" class="btn-fairy"
+  style="position:fixed; bottom:20px; right:20px; z-index:1000;">
+  🔊 Music On
+</button>
+
+<script src="script.js"></script>
+
 
 <!-- JS -->
 <script src="script.js"></script>
