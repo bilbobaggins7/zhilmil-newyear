@@ -2,44 +2,52 @@ const bgm = document.getElementById('bgm');
 const bell = document.getElementById('bell');
 const musicBtn = document.getElementById('musicBtn');
 
-let audioUnlocked = false;
+let musicOn = false;
 
-function unlockAudio() {
-  if (audioUnlocked) return;
-  bgm.volume = 0.6;
-  bgm.play().catch(()=>{});
-  audioUnlocked = true;
-  musicBtn.innerText = '🔊 Music On';
-}
+/* 🎵 MUSIC TOGGLE */
+musicBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
 
-document.body.addEventListener('click', unlockAudio, { once: true });
+  if (!musicOn) {
+    bgm.volume = 0.6;
+    bgm.play().catch(() => {});
+    musicBtn.innerText = '🔊 Music On';
+    musicOn = true;
+  } else {
+    bgm.pause();
+    musicBtn.innerText = '🔇 Music Off';
+    musicOn = false;
+  }
+});
 
+/* 🔔 FAIRY BELL */
 function playBell() {
-  if (!audioUnlocked) return;
+  if (!musicOn) return;
   bell.currentTime = 0;
-  bell.play().catch(()=>{});
+  bell.volume = 0.8;
+  bell.play().catch(() => {});
 }
 
+/* 📖 PAGE NAVIGATION */
 function goToPage(n) {
   playBell();
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('section').forEach(sec =>
+    sec.classList.remove('active')
+  );
   document.getElementById('page' + n).classList.add('active');
 }
 
+/* 🌹 PETALS */
 function petals() {
   playBell();
+
   for (let i = 0; i < 30; i++) {
     const p = document.createElement('div');
     p.className = 'petal';
     p.style.left = Math.random() * 100 + 'vw';
-    p.style.top = '-10px';
-    p.style.position = 'fixed';
-    p.style.width = '16px';
-    p.style.height = '16px';
-    p.style.background = 'pink';
-    p.style.borderRadius = '50%';
-    p.style.animation = 'fall 4s linear';
+    p.style.animationDuration = 3 + Math.random() * 3 + 's';
+
     document.body.appendChild(p);
-    setTimeout(() => p.remove(), 4000);
+    setTimeout(() => p.remove(), 6000);
   }
 }
