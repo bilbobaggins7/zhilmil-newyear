@@ -4,7 +4,7 @@ const musicBtn = document.getElementById('musicBtn');
 
 let musicOn = false;
 
-/* 🎵 MUSIC TOGGLE */
+/* 🎵 MUSIC TOGGLE (must be user click) */
 musicBtn.addEventListener('click', (e) => {
   e.stopPropagation();
 
@@ -28,7 +28,7 @@ function playBell() {
   bell.play().catch(() => {});
 }
 
-/* 📖 PAGE NAVIGATION */
+/* 📖 PAGE SWITCH */
 function goToPage(n) {
   playBell();
   document.querySelectorAll('section').forEach(sec =>
@@ -37,17 +37,14 @@ function goToPage(n) {
   document.getElementById('page' + n).classList.add('active');
 }
 
-/* 🌹 PETALS */
+/* 🌹 ROSE PETALS (FIXED FALLING) */
 function petals() {
   playBell();
 
   for (let i = 0; i < 30; i++) {
     const p = document.createElement('div');
     p.className = 'petal';
-    p.style.left = Math.random() * 100 + 'vw';
-    p.style.animationDuration = 3 + Math.random() * 3 + 's';
 
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 6000);
-  }
-}
+    p.style.left = Math.random() * 100 + 'vw';
+
+    const duration = 3 + Math.random() * 3;
