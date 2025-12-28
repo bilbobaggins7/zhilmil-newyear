@@ -1,50 +1,68 @@
-const bgm = document.getElementById('bgm');
-const bell = document.getElementById('bell');
-const musicBtn = document.getElementById('musicBtn');
+const pages = document.querySelectorAll(".page");
+const backArrow = document.getElementById("backArrow");
+const bgm = document.getElementById("bgm");
 
-let musicOn = false;
+let current = 1;
+let arrowTimer;
+let musicStarted = false;
 
-/* 🎵 MUSIC TOGGLE (must be user click) */
-musicBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
+/* 🎵 START MUSIC — ONLY ON USER CLICK */
+function startMusic() {
+  if (musicStarted) return;
 
-  if (!musicOn) {
-    bgm.volume = 0.6;
-    bgm.play().catch(() => {});
-    musicBtn.innerText = '🔊 Music On';
-    musicOn = true;
+  bgm.volume = 0.6;
+  bgm.play()
+    .then(() => {
+      musicStarted = true;
+      console.log("Music started");
+    })
+    .catch(err => console.log("Play failed:", err));
+}
+
+/* PAGE NAV */
+function goTo(n) {
+  pages.forEach(p => p.classList.remove("active"));
+  document.getElementById("page" + n).classList.add("active");
+  current = n;
+  showArrow();
+}
+
+function goBack() {
+  if (current > 1) goTo(current - 1);
+}
+
+/* BACK ARROW */
+backArrow.onclick = goBack;
+
+function showArrow() {
+  if (current > 1) {
+    backArrow.style.display = "block";
+    resetArrowTimer();
   } else {
-    bgm.pause();
-    musicBtn.innerText = '🔇 Music Off';
-    musicOn = false;
+    backArrow.style.display = "none";
   }
-});
+}
 
-/* 🔔 FAIRY BELL */
-function playBell() {
-  if (!musicOn) return;
+function resetArrowTimer() {
+  clearTimeout(arrowTimer);
+  arrowTimer = setTimeout(() => {
+    backArrow.style.opacity = "0";
+  }, 3000);
+  backArrow.style.opacity = "1";
+}
+
+/* 🎉 CELEBRATE */
+function throwPetals() {
+  const bell = document.getElementById("bell");
   bell.currentTime = 0;
-  bell.volume = 0.8;
-  bell.play().catch(() => {});
+  bell.play();
+
+  for (let i = 0; i < 35; i++) {
+    const p = document.createElement("div");
+    p.className = "petal";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 8000);
+  }
 }
-
-/* 📖 PAGE SWITCH */
-function goToPage(n) {
-  playBell();
-  document.querySelectorAll('section').forEach(sec =>
-    sec.classList.remove('active')
-  );
-  document.getElementById('page' + n).classList.add('active');
-}
-
-/* 🌹 ROSE PETALS (FIXED FALLING) */
-function petals() {
-  playBell();
-
-  for (let i = 0; i < 30; i++) {
-    const p = document.createElement('div');
-    p.className = 'petal';
-
-    p.style.left = Math.random() * 100 + 'vw';
-
-    const duration = 3 + Math.random() * 3;
