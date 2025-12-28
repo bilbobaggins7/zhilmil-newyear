@@ -7,6 +7,24 @@ body {
   color: white;
 }
 
+/* 🌸 RADHE RADHE DEVOTIONAL STYLE */
+.radha {
+  display: block;
+  margin-top: 14px;
+  font-family: 'Tangerine', cursive; /* soft divine */
+  font-size: 2.4rem;
+  color: #ffcc70;
+  letter-spacing: 1px;
+  text-align: center;
+
+  text-shadow:
+    0 0 6px rgba(255,204,112,0.9),
+    0 0 14px rgba(255,183,77,0.6),
+    0 0 26px rgba(255,140,0,0.4);
+
+  animation: radhaGlow 2.5s ease-in-out infinite;
+}
+
 /* .fairy-bg {
   position: fixed;
   inset: 0;
@@ -36,7 +54,7 @@ body {
       rgba(15,18,50,0.45) 55%,
       rgba(15,18,50,0.75) 100%
     ),
-    url("./3989701.jpg");
+    url("3989701.jpg");
   background-size: cover;
   background-position: center;
   z-index: -1;
