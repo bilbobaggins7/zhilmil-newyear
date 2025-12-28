@@ -36,7 +36,7 @@ body {
       rgba(15,18,50,0.45) 55%,
       rgba(15,18,50,0.75) 100%
     ),
-    url("3989701.jpg");
+    url("./3989701.jpg");
   background-size: cover;
   background-position: center;
   z-index: -1;
