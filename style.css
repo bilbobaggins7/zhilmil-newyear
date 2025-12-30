@@ -215,7 +215,7 @@ body {
 }
 
 
-  /* 🕊️ Signature inside card */
+/* 🕊️ Signature inside card — DESKTOP SAFE */
 .signature {
   margin-top: 18px;
   text-align: center;
@@ -224,8 +224,10 @@ body {
   color: rgba(255, 230, 200, 0.9);
   letter-spacing: 0.4px;
 
+  visibility: hidden;
   opacity: 0;
-  animation: signatureFade 2s ease forwards;
+
+  animation: signatureFade 1.8s ease forwards;
   animation-delay: 1.5s;
 
   text-shadow:
@@ -237,15 +239,15 @@ body {
   font-style: italic;
 }
 
+/* Only opacity — no transform */
 @keyframes signatureFade {
-  from {
+  0% {
+    visibility: visible;
     opacity: 0;
-    transform: translateY(6px);
   }
-  to {
+  100% {
+    visibility: visible;
     opacity: 1;
-    transform: translateY(0);
   }
 }
-
 }
