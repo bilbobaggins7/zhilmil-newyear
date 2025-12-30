@@ -214,4 +214,38 @@ body {
   background-position: left center;
 }
 
+
+  /* 🕊️ Signature inside card */
+.signature {
+  margin-top: 18px;
+  text-align: center;
+  font-family: 'Tangerine', cursive;
+  font-size: 1.7rem;
+  color: rgba(255, 230, 200, 0.9);
+  letter-spacing: 0.4px;
+
+  opacity: 0;
+  animation: signatureFade 2s ease forwards;
+  animation-delay: 1.5s;
+
+  text-shadow:
+    0 0 6px rgba(255,200,150,0.6),
+    0 0 14px rgba(255,170,100,0.35);
+}
+
+.signature span {
+  font-style: italic;
+}
+
+@keyframes signatureFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 }
